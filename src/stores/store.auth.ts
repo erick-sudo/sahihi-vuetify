@@ -10,6 +10,17 @@ export const useAuthStore = defineStore("auth", {
     currentAuth(state) {
       return state.auth;
     },
+    isAdmin(state) {
+      return !!state.auth?.authorities.some((a) => a.name === "ROLE_ADMIN");
+    },
+    isProjectManager(state) {
+      return !!state.auth?.authorities.some(
+        (a) => a.name === "ROLE_PROJECT_MANAGER"
+      );
+    },
+    isEngineer(state) {
+      return !!state.auth?.authorities.some((a) => a.name === "ROLE_ENGINEER");
+    },
   },
   actions: {
     clearAuth() {

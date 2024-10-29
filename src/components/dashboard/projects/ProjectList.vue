@@ -2,7 +2,7 @@
     <div class="shadow rounded bg-gray-50">
         <div class="flex items-center p-2">
             <div class="flex-grow px-2 text-gray-700">Projects</div>
-            <div class="relative group">
+            <div v-if="authStore.isAdmin" class="relative group">
                 <button class="px-4 text-green-600">New Project</button>
                 <div class="relative">
                     <div class="absolute right-0 hidden group-hover:block">
@@ -28,6 +28,9 @@
 import { defineEmits } from 'vue';
 import { useProjectStore } from '../../../stores/store.projects';
 import CreateProject from './CreateProject.vue';
+import { useAuthStore } from '../../../stores/store.auth';
+
+const authStore = useAuthStore()
 
 const projectStore = useProjectStore();
 const emit = defineEmits(['select']);

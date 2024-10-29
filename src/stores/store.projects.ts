@@ -6,7 +6,7 @@ import { APIS } from "../lib/apis";
 
 const handleRequest = useAPI();
 
-export const useProjectStore = defineStore("project", {
+export const useProjectStore = defineStore("projects", {
   state: () => ({
     projects: [] as Project[],
     currentProject: null as Project | null,
@@ -15,7 +15,6 @@ export const useProjectStore = defineStore("project", {
     getProjects(state) {
       return state.projects;
     },
-
     getSelectedProject(state) {
       return state.currentProject;
     },

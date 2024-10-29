@@ -13,7 +13,7 @@
             </ul>
         </div>
 
-        <div class="border-t py-4 mt-4">
+        <div v-if="authStore.isAdmin" class="border-t py-4 mt-4">
             <h4 class="text-gray-700 font-semibold">Assign Users</h4>
             <form class="grid gap-2 md:grid-cols-3"
                 @submit.prevent="assignRoleToProject(projectStore.getSelectedProject!!)">
@@ -43,6 +43,7 @@ import useAPI from '../../../composables/useAPI';
 import { APIS } from '../../../lib/apis';
 import { axiosGet, axiosPatch } from '../../../lib/axiosLib';
 import { Project, ProjectAssignmentDetails } from '../../../lib/definitions';
+import { useAuthStore } from '../../../stores/store.auth';
 import { useProjectStore } from '../../../stores/store.projects';
 import { useRoleStore } from '../../../stores/store.roles';
 import { useUserStore } from '../../../stores/store.users';
@@ -53,6 +54,7 @@ const handleRequest = useAPI()
 const usrStore = useUserStore()
 const roleStore = useRoleStore()
 const projectStore = useProjectStore()
+const authStore = useAuthStore()
 
 const projectAssignments = ref<ProjectAssignmentDetails[]>([])
 const selectedUserId = ref<string>("")

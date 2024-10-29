@@ -56,7 +56,9 @@ onMounted(async () => {
         <nav class="flex items-center p-2">
             <div class="flex-grow">
                 <h3 class="font-bold uppercase"><span class="text-green-600">Sahihi</span>-Interior-Builders</h3>
+                <div class="text-xs font-bold text-green-700">{{ authStore.currentAuth?.principal.email }}</div>
             </div>
+
             <div>
                 <button type="button" @click="signout" class="px-4 py-1 s-btn"
                     :class="{ 'bg-gray-300 text-gray-600': signingOut }">

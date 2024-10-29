@@ -7,7 +7,8 @@
             <strong class="text-gray-800">Role:</strong> {{ role }}
         </p>
         <p class="text-sm text-gray-500 flex justify-center">
-            <button @click="unassignRole(projectStore.getSelectedProject!!)" class="text-red-800 hover:bg-red-200 px-4 rounded py-1.5 duration-300">Unassign</button>
+            <button :disabled="!authStore.isAdmin" @click="unassignRole(projectStore.getSelectedProject!!)"
+                class="text-red-800 disabled:bg-gray-300 disabled:text-gray-600 disabled:cursor-not-allowed hover:bg-red-200 px-4 rounded py-1.5 duration-300">Unassign</button>
         </p>
     </div>
 </template>
@@ -19,9 +20,10 @@ import { APIS } from '../../../lib/apis';
 import { axiosPatch } from '../../../lib/axiosLib';
 import useAPI from '../../../composables/useAPI';
 import { useProjectStore } from '../../../stores/store.projects';
+import { useAuthStore } from '../../../stores/store.auth';
 
 const projectStore = useProjectStore()
-
+const authStore = useAuthStore()
 const handleRequest = useAPI()
 
 const props = defineProps<{

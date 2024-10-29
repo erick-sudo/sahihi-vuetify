@@ -17,7 +17,8 @@
                     <input v-model="form.password" type="password" class="s-input" />
                     <span v-if="errors.password" class="text-red-600 text-xs">{{ errors.password }}</span>
                 </div>
-                <button type="submit" class="s-btn mt-2 px-4 py-1.5" :class="{ 'bg-gray-300 text-gray-600': submitting }">
+                <button type="submit" class="s-btn mt-2 px-4 py-1.5"
+                    :class="{ 'bg-gray-300 text-gray-600': submitting }">
                     {{ submitting ? 'Signing in...' : 'Signin' }}
                 </button>
 
@@ -76,8 +77,8 @@ const loginSchema = Joi.object({
 });
 
 const form = ref<LoginForm>({
-    email: "john.doe@example.com",
-    password: 'Password123@'
+    email: "",
+    password: ''
 });
 
 const submitting = ref(false)
